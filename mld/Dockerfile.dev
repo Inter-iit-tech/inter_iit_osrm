@@ -1,0 +1,13 @@
+FROM ghcr.io/project-osrm/osrm-backend:latest
+
+WORKDIR /usr/src/app
+
+COPY ./extract ./data
+
+RUN osrm-partition ./data/clip.osrm
+
+RUN osrm-customize ./data/clip.osrm
+
+EXPOSE 5000
+
+CMD osrm-routed --algorithm mld --max-table-size 10000 ./data/clip.osrm

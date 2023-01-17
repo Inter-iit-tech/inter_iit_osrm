@@ -1,0 +1,10 @@
+version: "3"
+services:
+  osrm-ch:
+    image: osrm-ch
+    ports: 
+      - "5000:5000"
+  osrm-mld:
+    image: osrm-mld
+    ports:
+      - "5001:5000"
