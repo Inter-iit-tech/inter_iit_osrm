@@ -1,10 +1,17 @@
-version: "3"
+version: "2.4"
 services:
   osrm-ch:
     image: osrm-ch
+    container_name: server-ch
     ports: 
       - "5000:5000"
+    mem_limit: 1g
+    cpus: 2
+
   osrm-mld:
     image: osrm-mld
+    container_name: server-mld
     ports:
       - "5001:5000"
+    mem_limit: 1g
+    cpus: 2
