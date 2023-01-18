@@ -1,7 +1,0 @@
-service:
-  image: osrm-ch
-  container_name: server-ch
-  ports:
-    - "5000:5000"
-  mem_limit: 512m
-  cpus: 0.5
