@@ -1,0 +1,12 @@
+version: "2.4"
+services:
+  osrm-ch-fast:
+    image: osrm-ch-fast
+    container_name: server-ch-fast
+    ports: 
+      - "6000:5000"
+  osrm-mld-fast:
+    image: osrm-mld-fast
+    container_name: server-mld-fast
+    ports:
+      - "6001:5000"

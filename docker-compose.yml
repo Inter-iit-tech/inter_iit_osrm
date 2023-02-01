@@ -15,13 +15,3 @@ services:
       - "5001:5000"
     mem_limit: 1g
     cpus: 2
-  osrm-ch-fast:
-    image: osrm-ch
-    container_name: server-ch
-    ports: 
-      - "5000:5000"
-  osrm-mld-fast:
-    image: osrm-mld
-    container_name: server-mld
-    ports:
-      - "5001:5000"
