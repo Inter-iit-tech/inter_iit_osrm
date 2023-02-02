@@ -1,7 +1,9 @@
 bengaluru-clip:
-	./clipper.exe southern-zone-latest.osm.pbf -b=77.50,12.88,77.68,13.05 --out-pbf -o=clip.osm.pbf
+	rm clip.osm.pbf
+	./clipper.exe southern-zone-latest.osm.pbf -b=77.50,12.88,78.68,14.05 --out-pbf -o=clip.osm.pbf
 
 get-map:
+	rm ./southern-zone-latest.osm.pbf
 	wget https://download.geofabrik.de/asia/india/southern-zone-latest.osm.pbf
 
 build-ch:
@@ -56,3 +58,10 @@ clean-hard:
 	rm -r ./extract
 	mkdir extract
 	docker-compose rm
+
+complete:
+	$(MAKE) clean-hard
+	$(MAKE) get-map
+	$(MAKE) bengaluru-clip
+	$(MAKE) build
+	$(MAKE) run
