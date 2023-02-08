@@ -13,7 +13,8 @@ build-mld:
 	docker build --memory="1G" --cpu-quota=2 -t osrm-mld -f mld/Dockerfile.dev .
 
 et:
-	mkdir t_extract
+	mkdir -p extract
+	mkdir -p t_extract
 	cp ./clip.osm.pbf ./t_extract
 	docker build --memory="1G" --cpu-quota=2 -t osrm-build -f ./Dockerfile .
 	docker run --memory="1G" --cpus=2 --rm -t -v "${PWD}:/data" osrm-build osrm-extract -p /opt/motorcycle.lua /data/t_extract/clip.osm.pbf
@@ -28,6 +29,7 @@ build-mld-fast:
 	docker build -t osrm-mld-fast -f mld/Dockerfile.dev .
 
 et-fast:
+	mkdir extract 
 	mkdir t_extract
 	cp ./clip.osm.pbf ./t_extract
 	docker run --rm -t -v "${PWD}:/data" ghcr.io/project-osrm/osrm-backend osrm-extract -p /opt/car.lua /data/t_extract/clip.osm.pbf

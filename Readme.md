@@ -25,7 +25,7 @@ Write the Following command for downloading the map osm.pbf file, clipping it, b
 ```shell
 make complete
 ```
-
+Use fast commands for dev
 ## Find Us
 
 * [GitHub](https://github.com/Inter-iit-tech/inter_iit_osrm)
