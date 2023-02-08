@@ -1,9 +1,9 @@
 bengaluru-clip:
-	rm clip.osm.pbf
+	rm -f clip.osm.pbf
 	./clipper.exe southern-zone-latest.osm.pbf -b=77,12,79,15 --out-pbf -o=clip.osm.pbf
 
 get-map:
-	rm ./southern-zone-latest.osm.pbf
+	rm -f ./southern-zone-latest.osm.pbf
 	wget https://download.geofabrik.de/asia/india/southern-zone-latest.osm.pbf
 
 build-ch:
@@ -19,7 +19,7 @@ et:
 	docker build --memory="1G" --cpu-quota=2 -t osrm-build -f ./Dockerfile .
 	docker run --memory="1G" --cpus=2 --rm -t -v "${PWD}:/data" osrm-build osrm-extract -p /opt/motorcycle.lua /data/t_extract/clip.osm.pbf
 	cp -r ./t_extract/. ./extract
-	rm -r t_extract
+	rm -rf t_extract
 
 
 build-ch-fast:
@@ -34,7 +34,7 @@ et-fast:
 	cp ./clip.osm.pbf ./t_extract
 	docker run --rm -t -v "${PWD}:/data" ghcr.io/project-osrm/osrm-backend osrm-extract -p /opt/car.lua /data/t_extract/clip.osm.pbf
 	cp -r ./t_extract/. ./extract
-	rm -r t_extract
+	rm -rf t_extract
 
 build:
 	$(MAKE) et
@@ -54,10 +54,10 @@ run-fast:
 
 clean:
 	docker-compose rm
-	rm -r ./t_extract
+	rm -rf ./t_extract
 
 clean-hard:
-	rm -r ./extract
+	rm -rf ./extract
 	mkdir extract
 	docker-compose rm
 
