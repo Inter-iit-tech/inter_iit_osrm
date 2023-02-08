@@ -1,6 +1,6 @@
 bengaluru-clip:
 	rm clip.osm.pbf
-	./clipper.exe southern-zone-latest.osm.pbf -b=77.50,12.88,78.68,14.05 --out-pbf -o=clip.osm.pbf
+	./clipper.exe southern-zone-latest.osm.pbf -b=77,12,79,15 --out-pbf -o=clip.osm.pbf
 
 get-map:
 	rm ./southern-zone-latest.osm.pbf
